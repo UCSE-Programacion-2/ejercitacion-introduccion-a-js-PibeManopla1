@@ -166,13 +166,14 @@ function esDiezOCinco(numero) {
 }
 
 function estaEnRango(numero) {
-  return numero >= 20 && numero <= 50;
+  return numero < 50 && numero > 20;
 }
 
 function esEntero(numero) {
   if (numero % 1 === 0) {
     return true;
   }
+  return false;
 }
 
 function fizzBuzz(numero) {
@@ -189,9 +190,8 @@ function fizzBuzz(numero) {
 }
 
 function esPrimo(numero) {
-  if (numero === 1 || numero === 0) {
-    return false;
-  }
+  if (numero <= 1) return false;
+
   for (let i = 2; i < numero; i++) {
     if (numero % i === 0) {
       return false;
@@ -203,12 +203,10 @@ function esPrimo(numero) {
 // --- Temario ampliado (alcance let/const, tipos, operadores, Math, strings, condicionales, bucles avanzados) ---
 
 function valoresDelIndiceConLetEnBucle() {
-  let funciones = [];
+  const funciones = [];
 
   for (let i = 0; i < 3; i++) {
-    funciones.push(() => {
-      return i;
-    });
+    funciones.push(() => i);
   }
   return [funciones[0](), funciones[1](), funciones[2]()];
 }
@@ -243,20 +241,14 @@ function esNumeroValido(n) {
 }
 
 function acumularPorPasos(inicial, pasos) {
-
   let total = inicial;
   for (let i = 0; i < pasos.length; i++) {
-    if (pasos[i] > 0) {
-      total += pasos[i];
-    } else {
-      total -= pasos[i];
-    }
+    total += pasos[i];
   }
   return total;
 }
 
 function aplicarIncrementoDesdeCero(intentos) {
-  
   let contador = 0;
   for (let i = 0; i < intentos; i++) {
     contador++;
@@ -265,113 +257,95 @@ function aplicarIncrementoDesdeCero(intentos) {
 }
 
 function enteroDesdeBinario(binarioStr) {
- 
   return parseInt(binarioStr, 2);
 }
 
 function floatDesdeTexto(texto) {
- 
   return parseFloat(texto);
 }
 
 function precioFormateadoDosDecimales(precio) {
-
   return precio.toFixed(2);
 }
 
 function esNumeroFinitoValor(n) {
-
   return Number.isFinite(n);
 }
 
 function redondearHaciaAbajo(num) {
-
   return Math.floor(num);
 }
 
 function aleatorioEnteroInclusive(min, max) {
-
-    return Math.floor(Math.random() * (max - min + 1)) + min;
+  return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
 function buscarIndiceCadena(texto, subcadena) {
-
-    return texto.indexOf(subcadena);
+  return texto.indexOf(subcadena);
 }
 
 function extraerPorSlice(texto, inicio, fin) {
-
-    return texto.slice(inicio, fin);
+  return texto.slice(inicio, fin);
 }
 
 function limpiarEspaciosExtremos(texto) {
-
-    return texto.trim();
+  return texto.trim();
 }
 
 function partirEnEspacios(texto) {
-
-    return texto.split(' ');
+  return texto.split(' ');
 }
 
 function reemplazarGuionesPorEspacio(texto) {
-
-    return texto.replace(/-/g, ' ');
+  return texto.replace(/-/g, ' ');
 }
 
 function minusculasYRecortado(texto) {
-
-    return texto.trim().toLowerCase();
+  return texto.trim().toLowerCase();
 }
 
 function mayusculasTrasTrim(texto) {
-
-    return texto.trim().toUpperCase();
+  return texto.trim().toUpperCase();
 }
 
 function puedePasarAlEvento(edad, tieneEntrada, esVIP) {
-
-    return edad >= 18 && (tieneEntrada || esVIP);
+  return (edad >= 18 && tieneEntrada) || esVIP;
 }
 
 function noEsValorFalso(valor) {
-
-    if (valor === false) {
-      return true;
-    }
+  if (valor === false) {
     return false;
+  }
+  return true;
 }
 
 function clasificarSigno(num) {
-
-    return num > 0 ? 'positivo' : num < 0 ? 'negativo' : 'cero';
+  return num > 0 ? 'positivo' : num < 0 ? 'negativo' : 'cero';
 }
 
 function clasificarTipoDia(codigo) {
-
-      switch (codigo) {
-        case 'lun':
-        case 'mar':
-        case 'mie':
-        case 'jue':
-        case 'vie':
-          return 'habil';
-        case 'sab':
-        case 'dom':
-          return 'descanso';
-        default:
-          return 'desconocido';
-      }
+  switch (codigo) {
+    case 'lun':
+    case 'mar':
+    case 'mie':
+    case 'jue':
+    case 'vie':
+      return 'habil';
+    case 'sab':
+    case 'dom':
+      return 'descanso';
+    default:
+      return 'desconocido';
+  }
 }
 
 function sumaDesdeUnoConWhile(numeroFinal) {
- 
-    let suma = 0;
-    while (numeroFinal > 0) {
-      suma += numeroFinal;
-      numeroFinal--;
-    }
-    return suma;
+  let suma = 0;
+  while (numeroFinal > 0) {
+    suma += numeroFinal;
+    numeroFinal--;
+  }
+  return suma;
 }
 
 function primerMultiploEnIntervaloDoWhile(inicio, divisor, limiteSuperior) {
@@ -390,22 +364,19 @@ function primerMultiploEnIntervaloDoWhile(inicio, divisor, limiteSuperior) {
 }
 
 function tablaMultiplicacionForBase(base) {
-
-    let tabla = [];
-    for (let i = 0; i < 10; i++) {
-      tabla.push(base * (i + 1));
-    }
-    return tabla;
+  const tabla = [];
+  for (let i = 0; i < 10; i++) {
+    tabla.push(base * (i + 1));
+  }
+  return tabla;
 }
 
 function saludarConTitulo(nombre, titulo = 'Sr.') {
-
-    return `Hola, ${titulo} ${nombre}!`;  
+  return `Hola, ${titulo} ${nombre}!`;
 }
 
 function elevarConExponentePorDefecto(base, exponente = 2) {
-  
-    return Math.pow(base, exponente);
+  return base ** exponente;
 }
 
 // No modificar nada debajo de esta línea
